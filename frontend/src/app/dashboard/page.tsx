@@ -515,7 +515,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
 
           {/* Balance */}
           <div className="bg-white rounded-2xl p-6 shadow-lg">
@@ -562,18 +562,6 @@ export default function DashboardPage() {
 
             <p className="text-3xl font-bold">
               ₹{wallet?.remainingInvestment?.toLocaleString() ?? '0'}
-            </p>
-          </div>
-
-          {/* Referral Income */}
-          <div className="bg-white rounded-2xl p-6 shadow-lg">
-            <div className="flex justify-between mb-4">
-              <h3 className="text-gray-600 font-semibold">Referral Income</h3>
-              <Share2 className="text-emerald-600" />
-            </div>
-
-            <p className="text-3xl font-bold">
-              ₹{wallet?.referralIncome?.toLocaleString() ?? '0'}
             </p>
           </div>
         </div>

@@ -10,6 +10,7 @@
     "db:schema": "psql postgres://postgres:9006532@localhost:5432/investment_platform -f src/database/schema.sql"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",

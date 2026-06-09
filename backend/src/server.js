@@ -9,6 +9,7 @@ import errorHandler from './middleware/errorHandler.js';
 import { captureRawBody } from './middleware/rawBody.js';
 import { startInvestmentCron } from './cron/investmentCron.js';
 import { pool } from './database/db.js';
+import { listAvailableModels }from "./ai/openaiClient.js";
 
 const app = express();
 
@@ -25,6 +26,18 @@ app.get('/health', (_req, res) => {
 app.use('/api', routes);
 app.use((_req, res) => {
   res.status(404).json({ error: { code: 'NOT_FOUND', message: 'Route not found' } });
+});
+app.get('/models', async (req, res) => {
+  console.log('GET /models endpoint called');
+  try {
+    console.log('Calling listAvailableModels...');
+    const models = await listAvailableModels();
+    console.log('Models received:', models);
+    res.json(models);
+  } catch (err) {
+    console.error('Error in /models route:', err);
+    res.status(500).json({ error: err.message, stack: err.stack });
+  }
 });
 app.use(errorHandler);
 
